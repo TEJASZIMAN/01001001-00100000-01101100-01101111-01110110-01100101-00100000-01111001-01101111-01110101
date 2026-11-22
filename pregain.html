@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blah blah blah tracker</title>
+    <link rel="stylesheet" href="pregain.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <div>
+                <h1 style="color: #3abcfa;">Idk Tracker</h1>
+                <p>Why need friends ,</p>
+                <p>compete with <b style="color: #f9cc17;">yourself</b></p>
+            </div>
+            <div class="logo">⏱️</div>
+        </header>
+
+        <!-- Statistics -->
+        <section class="stats" style="visibility: hidden;height:1px">
+            <div class="stat-card">
+                <span>Total Sessions</span>
+                <h2 id="totalSessions">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <span>Total Time</span>
+                <h2 id="totalTime">0h 0m</h2>
+            </div>
+        </section>
+
+        <!-- Stopwatch -->
+        <section class="stopwatch-card">
+
+            <h2>Stopwatch</h2>
+
+            <input
+                type="text"
+                id="sessionName"
+                placeholder="Enter session name..."
+            >
+
+            <select id="category">
+                <option value="Physics">Physics</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Maths">Maths</option>
+                <option value="Biology">Biology</option>
+                <option value="Sanskrit">Sanskrit</option>
+                <option value="English">English</option>
+            </select>
+
+            <div class="timer" id="timer">00:00:00</div>
+
+            <div class="timer-controls">
+                <button id="startBtn" class="start-btn">
+                    Start
+                </button>
+
+                <button id="pauseBtn" class="pause-btn" disabled>
+                    ▐▐
+                </button>
+
+                <button id="stopBtn" class="stop-btn" disabled>
+                    Stop
+                </button>
+            </div>
+
+            <div id="saveArea" class="save-area hidden">
+                <p>Session completed! Save your session.</p>
+                <button id="saveBtn" class="save-btn">
+                    Save Session
+                </button>
+                <button id="discardBtn" class="discard-btn">
+                    Discard
+                </button>
+            </div>
+
+        </section>
+
+        <section class="category-stats">
+
+    <h2>Time by Category</h2>
+
+    <div class="category-grid" id="categoryStats">
+
+    </div>
+
+</section>
+
+<br>
+<!-- CUSTOMIZABLE TIMETABLE -->
+
+<section class="timetable-section">
+
+    <div class="timetable-header">
+        <div>
+            <h2>📅 My Study Timetable</h2>
+            <p id="timetableDate"></p>
+        </div>
+
+        <button id="addActivityBtn" class="add-activity-btn">
+            + Add Activity
+        </button>
+    </div>
+
+    <!-- Add/Edit Activity Form -->
+
+    <div id="activityForm" class="activity-form hidden">
+
+        <h3 id="formHeading">Add New Activity</h3>
+
+        <input
+            type="text"
+            id="activityName"
+            placeholder="Activity name..."
+        >
+
+        <select id="activitySubject">
+            <option value="Physics">Physics</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="Maths">Maths</option>
+            <option value="Biology">Biology</option>
+            <option value="Sanskrit">Sanskrit</option>
+            <option value="English">English</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <div class="timetable-time-row">
+            <div>
+                <label>Start Time</label>
+                <input type="time" id="activityStart">
+            </div>
+<br>
+            <div>
+                <label>End Time</label>
+                <input type="time" id="activityEnd">
+            </div>
+        </div>
+
+        <label>Select Days</label>
+
+        <div class="timetable-days">
+            <label><input type="checkbox" value="1"> Mon</label>
+            <label><input type="checkbox" value="2"> Tue</label>
+            <label><input type="checkbox" value="3"> Wed</label>
+            <label><input type="checkbox" value="4"> Thu</label>
+            <label><input type="checkbox" value="5"> Fri</label>
+            <label><input type="checkbox" value="6"> Sat</label>
+            <label><input type="checkbox" value="0"> Sun</label>
+        </div>
+
+        <div class="timetable-form-buttons">
+            <button id="saveActivityBtn">Save Activity</button>
+            <button id="cancelActivityBtn">Cancel</button>
+        </div>
+
+    </div>
+
+    <!-- Weekday Filter -->
+
+    <div class="weekday-filter" id="weekdayFilter">
+        <button data-day="1">Mon</button>
+        <button data-day="2">Tue</button>
+        <button data-day="3">Wed</button>
+        <button data-day="4">Thu</button>
+        <button data-day="5">Fri</button>
+        <button data-day="6">Sat</button>
+        <button data-day="0">Sun</button>
+    </div>
+
+    <!-- Activities -->
+
+    <div id="timetableList"></div>
+
+</section>
+
+
+        <!-- Session History -->
+        <section class="history">
+
+            <div class="history-header">
+                <div>
+                    <h2>Session History</h2>
+                    <p>Your saved activities</p>
+                </div>
+                <span id="sessionCount">0 sessions</span>
+            </div>
+
+            <div id="sessionList">
+                <div class="empty">
+                    <span>📋</span>
+                    <p>No sessions yet.</p>
+                    <small>Start your first session!</small>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+
+
+<!-- Category Statistics -->
+
+
+    <script src="pregain.js"></script>
+</body>
+</html>

@@ -1,0 +1,593 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e293b;
+opacity: 0.8;
+background-image: conic-gradient(from 60deg at 56.25% calc(425% / 6), transparent 0deg, transparent 0.5deg, #030617 0.5deg, #030617 119.5deg, transparent 119.5deg, transparent 120deg), conic-gradient(from 60deg at 56.25% calc(425% / 6), transparent 0deg, transparent 0.5deg, #030617 0.5deg, #030617 119.5deg, transparent 119.5deg, transparent 120deg), conic-gradient(from 180deg at 43.75% calc(425% / 6), transparent 0deg, transparent 0.5deg, #030617 0.5deg, #030617 119.5deg, transparent 119.5deg, transparent 120deg), conic-gradient(from 180deg at 43.75% calc(425% / 6), transparent 0deg, transparent 0.5deg, #030617 0.5deg, #030617 119.5deg, transparent 119.5deg, transparent 120deg), conic-gradient(from -60deg at 50% calc(175% / 12), transparent 0deg, transparent 0.5deg, #030617 0.5deg, #030617 119.5deg, transparent 119.5deg, transparent 120deg), conic-gradient(from -60deg at 50% calc(175% / 12), transparent 0deg, transparent 0.5deg, #030617 0.5deg, #030617 119.5deg, transparent 119.5deg, transparent 120deg);
+background-position: 0 0, 10px 17px, 0 0, 10px 17px, 10px 0, 0 17px;
+background-size: 20px 34px;
+    color: #3abcfa;
+    min-height: 100vh;
+    padding: 35px 20px;
+}
+
+.container {
+    max-width: 850px;
+    margin: auto;
+}
+
+/* Header */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1b2030;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+header p,
+.subtitle,
+.history-header p {
+    color: #9299aa;
+}
+
+.logo {
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 28px;
+}
+
+/* Statistics */
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: #1b2030;
+    border: 1px solid #30364a;
+    padding: 22px;
+    border-radius: 15px;
+}
+
+.stat-card span {
+    color: #9299aa;
+    font-size: 14px;
+}
+
+.stat-card h2 {
+    font-size: 30px;
+    margin-top: 12px;
+    color: #8d9bff;
+}
+
+/* Stopwatch */
+
+.stopwatch-card {
+    background: #1b2030;
+    border: 1px solid #30364a;
+    padding: 30px;
+    border-radius: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.stopwatch-card h2 {
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 14px;
+    background: #101522;
+    border: 1px solid #363d52;
+    border-radius: 9px;
+    color: white;
+    outline: none;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+input:focus,
+select:focus {
+    border-color: #8291ff;
+}
+
+.timer {
+    font-size: clamp(42px, 10vw, 65px);
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin: 30px 0;
+    color: #a1adff;
+    font-variant-numeric: tabular-nums;
+}
+
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    filter: brightness(1.12);
+}
+
+button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.start-btn {
+    background: #3abcfa;
+    color: #010619;
+}
+
+.pause-btn {
+    background: #3abcfa;
+    color: #010619;
+}
+
+.stop-btn {
+    background: #3abcfa;
+    color: #010619;
+}
+
+.save-area {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #363d52;
+}
+
+.save-area p {
+    margin-bottom: 15px;
+    color: #9eefa9;
+}
+
+.save-btn {
+    background: #39b878;
+    color: white;
+}
+
+.discard-btn {
+    background: #343b50;
+    color: white;
+    margin-left: 8px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* History */
+
+.history {
+    background: #1b2030;
+    border: 1px solid #30364a;
+    border-radius: 18px;
+    padding: 25px;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+    gap: 10px;
+}
+
+.history-header h2 {
+    margin-bottom: 7px;
+}
+
+.history-header p {
+    font-size: 14px;
+}
+
+#sessionCount {
+    background: #303957;
+    color: #aab5ff;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.session {
+    background: #252c3e;
+    padding: 18px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+    border: 1px solid #353d53;
+}
+
+.session-info {
+    min-width: 0;
+}
+
+.session-info h3 {
+    font-size: 16px;
+    margin-bottom: 7px;
+    overflow-wrap: anywhere;
+}
+
+.session-info p {
+    color: #9ba3b6;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.session-duration {
+    color: #a1adff;
+    font-weight: bold;
+    font-size: 17px;
+    white-space: nowrap;
+}
+
+.delete-btn {
+    background: #492a36;
+    color: #ff8796;
+    padding: 9px 12px;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.empty {
+    text-align: center;
+    padding: 35px 10px;
+    color: #9299aa;
+}
+
+.empty span {
+    font-size: 35px;
+}
+
+.empty p {
+    margin-top: 12px;
+}
+
+.empty small {
+    display: block;
+    margin-top: 7px;
+}
+
+footer {
+    text-align: center;
+    color: #737d91;
+    font-size: 12px;
+    margin-top: 25px;
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+    body {
+        padding: 22px 12px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    .stopwatch-card {
+        padding: 22px 15px;
+    }
+
+    .stats {
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .stat-card h2 {
+        font-size: 23px;
+    }
+
+    .session {
+        flex-wrap: wrap;
+    }
+
+    .history {
+        padding: 17px;
+    }
+}
+
+
+
+/* Category Statistics */
+
+.category-stats {
+    background: #1b2030;
+    border: 1px solid #30364a;
+    padding: 20px;
+    border-radius: 18px;
+    margin-bottom: 25px;
+}
+
+.category-stats h2 {
+    font-size: 21px;
+    margin-bottom: 20px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.category-card {
+    background: #252c3e;
+    padding: 18px;
+    border: 1px solid #353d53;
+    border-radius: 12px;
+}
+
+.category-card span {
+    color: #aab2c5;
+    font-size: 14px;
+}
+
+.category-card h3 {
+    color: #a1adff;
+    font-size: 23px;
+    margin-top: 12px;
+}
+
+@media (max-width: 500px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* CUSTOMIZABLE TIMETABLE */
+
+.timetable-section {
+    background: #1b2030;
+    border: 1px solid #30364a;
+    padding: 25px;
+    border-radius: 18px;
+    margin-bottom: 25px;
+}
+
+.timetable-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.timetable-header h2 {
+    font-size: 21px;
+    margin-bottom: 7px;
+}
+
+#timetableDate {
+    color: #9299aa;
+    font-size: 13px;
+}
+
+.add-activity-btn {
+    background: #6578f7;
+    color: white;
+    padding: 12px;
+}
+
+.activity-form {
+    background: #252c3e;
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.activity-form h3 {
+    margin-bottom: 15px;
+}
+
+.activity-form label {
+    display: block;
+    color: #aab2c5;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.timetable-time-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.timetable-days {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0 18px;
+}
+
+.timetable-days label {
+    background: #343e59;
+    padding: 9px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.timetable-days input {
+    width: auto;
+    margin: 0;
+}
+
+.timetable-form-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+#saveActivityBtn {
+    background: #39b878;
+    color: white;
+}
+
+#cancelActivityBtn {
+    background: #343b50;
+    color: white;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Weekday buttons */
+
+.weekday-filter {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+}
+
+.weekday-filter button {
+    background: #252c3e;
+    color: #aab2c5;
+    padding: 10px 13px;
+    flex-shrink: 0;
+}
+
+.weekday-filter button.active {
+    background: #6578f7;
+    color: white;
+}
+
+/* Activity cards */
+
+.timetable-activity {
+    background: #252c3e;
+    border: 1px solid #353d53;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.timetable-activity.completed {
+    opacity: 0.55;
+}
+
+.timetable-activity.completed .activity-title {
+    text-decoration: line-through;
+}
+
+.activity-title {
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+
+.activity-time {
+    color: #a1adff;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.activity-subject {
+    color: #9299aa;
+    font-size: 12px;
+}
+
+.activity-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    align-items: flex-end;
+}
+
+.activity-actions button {
+    padding: 8px 11px;
+    font-size: 12px;
+}
+
+.activity-edit {
+    background: #34446c;
+    color: white;
+}
+
+.activity-delete {
+    background: #492a36;
+    color: #ff8796;
+}
+
+.activity-complete {
+    color: #9eefa9;
+    font-size: 12px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.activity-complete input {
+    width: auto;
+    margin: 0;
+}
+
+.timetable-empty {
+    text-align: center;
+    padding: 30px;
+    color: #9299aa;
+}
+
+@media(max-width: 500px) {
+    .timetable-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .timetable-section {
+        padding: 17px;
+    }
+}
+
